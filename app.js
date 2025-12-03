@@ -139,5 +139,5 @@ async function authenticateToken(req, res, next) {
     next()
 }
 
-app.listen(process.env.port);
+app.listen(process.env.port, "0.0.0.0");
  
