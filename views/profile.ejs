@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register page</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+  <div class="w-screen min-h-screen text-white  bg-zinc-900 flex flex-col justify-start items-center">
+    <nav class="w-screen min-h-[5vh] flex justify-between items-center px-10 py-3 mb-5">
+      <div class="flex gap-5 w-[50%] justify-start items-center"> 
+        <img
+        class="w-16 h-16 rounded-full object-cover border-2 border-white"
+        src="<%=user.profilePicture%>" alt="Profile Picture"/>
+        <h1 class="text-4xl capitalize">Hi , <%=user.username%>👋🏻</h1>
+      </div>
+      <div class="flex gap-5 w-[50%] justify-end ">
+        
+    <a  class="bg-gray-500 px-5 py-2 text-xl rounded-md" href="/updateProfile" > Update Profile</a>
+        <a href="/postGallery" class="bg-green-300 text-slate-800 text-xl font-bold border-1 border-green-500 rounded-lg min-w-max max-w-[30%] text-center">View Posts</a>
+        <a  class="bg-red-500 px-5 py-2 text-xl rounded-md" href="/logout">Logout</a>
+      </div>
+    </nav>
+
+
+
+    <!-- creating a post using form and post method -->
+    <form action="/createPost" method="post" class=" flex flex-col w-[50%] items-center mb-5">
+      <h1 class="text-2xl">Create Post</h1>
+      <input type="text" name="title" placeholder="Enter title of the post" required min="3"
+        class="mt-10 border-2 w-[50%] border-white p-2 rounded-lg mx-10 outline-none bg-transparent" />
+      <input type="text" name="content" placeholder="Enter post content" required min="10"
+        class="mt-10 border-2 w-[50%] border-white p-2 rounded-lg mx-10 outline-none bg-transparent" />
+      <input type="submit" value="Create Post" class="bg-blue-500 text-3xl w-[30%] py-2 px-5 rounded-lg mx-10 mt-10" />
+    </form>
+    <hr class="text-white w-[60%] rounded-lg mb-5" />
+
+
+
+
+    <!-- users posts and edit and like button -->
+    <div
+      class="post-container w-screen min-h-[50%] flex justify-center items-center p-6 rounded-lg flex-wrap">
+      <%if(!user.post.length>0){%>
+        <h1 class="text-zinc-500">There is no post yet</h1>
+        <%}else{%>
+          <%user.post.forEach((post)=>{%>
+            <div
+             class="w-[300px] min-h-[200px] bg-zinc-800 m-5 p-5 rounded-xl shadow-lg shadow-slate-800">
+              <h3 class="p-2 text-left text-zinc-500 mb-2 text-sm tracking-wide ">@<%=user.username%></h3>
+              <h1 class="p-2 text-center text-zinc-200 mb-2 text-xl tracking-tight capitalize"><%=post.title%></h1>
+              <p class="p-2 text-center text-zinc-400 mb-2 text-md tracking-tighter "><%=post.content%></p>
+              <small><%= post.Likes.length%> likes</small>
+              <div class="w-full flex justify-around items-center mt-5">
+                <a href="/edit/<%=post._id%>" class="text-white bg-red-400 px-4 py-2 rounded-xl">Edit</a>
+                <a href="/like/<%=post._id%>" class="text-white bg-blue-500 px-4 py-2 rounded-xl"><%=post.Likes.indexOf(user._id)==-1?"Like":"Unlike" %></a>
+              </div>
+            </div>
+          <%})%>
+        <%} %>
+    </div>
+
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register page</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+  <div class="w-screen min-h-screen text-white  bg-zinc-900 flex flex-col justify-center items-center">
+    <!-- creating a post usinf form and post method -->
+    <form action="/update/<%=post._id%>" method="post" class=" flex flex-col w-[50%] items-center mb-5">
+      <h1 class="text-2xl">Edit Post</h1>
+      <input type="text" name="title" placeholder="Enter title of the post" required min="3" value="<%=post.title%>"
+        class="mt-10 border-2 w-[50%] border-white p-2 rounded-lg mx-10 outline-none bg-transparent" />
+      <input type="text" name="content" placeholder="Enter post content" required min="10" value="<%=post.content%>"
+        class="mt-10 border-2 w-[50%] border-white p-2 rounded-lg mx-10 outline-none bg-transparent" />
+      <input type="submit" value="Update Post" class="bg-blue-500 text-3xl w-[30%] py-2 px-5 rounded-lg mx-10 mt-10" />
+    </form>
+  </div>
+</body>
+
+</html>
