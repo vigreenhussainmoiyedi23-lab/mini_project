@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/mini_project')
+mongoose.connect(process.env.MONGO_URI)
 const userSchema = new mongoose.Schema({
     username:String,
     email:String,
