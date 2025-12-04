@@ -30,12 +30,15 @@
 
 
     <!-- creating a post using form and post method -->
-    <form action="/createPost" method="post" class=" flex flex-col w-[100%] items-center mb-5">
-      <h1 class="text-2xl text-gray-500">Create Post</h1>
+    <form action="/createPost" method="post" class=" flex flex-col  md:w-[50%] sm:w-[500px] w-[250px]  items-center ">Create Post</h1>
+      
       <input type="text" name="title" placeholder="Enter title of the post" required min="3"
-      class="mt-10 border-2 md:w-[50%] w-[80%] border-white p-2 rounded-lg mx-10 outline-none bg-transparent" />
+      class="mt-10 border-2 border-white p-2 rounded-lg mx-10 outline-none bg-transparent  md:w-[60%] sm:w-[500px] w-[250px]"/>
+      
       <input type="text" name="content" placeholder="Enter post content" required min="10"
-      class="mt-10 border-2 md:w-[50%] w-[80%] border-white p-2 rounded-lg mx-10 outline-none bg-transparent" />
+      class="mt-10 border-2 border-white p-2 rounded-lg mx-10 outline-none bg-transparent  md:w-[60%] sm:w-[500px] w-[250px]"/>
+      
+      
       <input type="submit" value="Create Post" class="bg-blue-500 text-3xl min-w-[100px] max-w-[50%] py-2 px-5 rounded-lg mx-10 mt-10 tracking-tighter" />
     </form>
     <hr class="text-white w-[60%] rounded-lg mb-5" />
@@ -50,8 +53,12 @@
         <%}else{%>
           <%user.post.forEach((post)=>{%>
             <div class="w-[300px] min-h-[200px] bg-zinc-800 m-5 p-5 rounded-xl shadow-lg shadow-slate-800">
+              <div class="flex flex-start gap-2 items-center">
+                <img class="w-16 h-16 rounded-full object-cover border-2 border-white" src="<%=user.profilePicture%>"
+          alt="Profile Picture" />
               <h3 class="p-2 text-left text-zinc-500 mb-2 text-sm tracking-wide ">@<%=user.username%>
               </h3>
+              </div>
               <h1 class="p-2 text-center text-zinc-200 mb-2 text-xl tracking-tight capitalize">
                 <%=post.title%>
               </h1>
