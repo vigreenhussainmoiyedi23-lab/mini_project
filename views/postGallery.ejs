@@ -8,21 +8,21 @@
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
-<body>
-  <div class="w-screen min-h-screen text-white  bg-zinc-900 flex flex-col justify-center items-center">
-    <nav class="w-screen min-h-[5vh] flex justify-end items-center px-10 mb-5">
-       <a  class="bg-red-500 px-5 py-2 text-xl rounded-md" href="/logout">Logout</a>
-       <a  class="bg-blue-500 px-5 py-2 text-xl rounded-md" href="/">Profile</a>
+<body class="overflow-x-hidden">
+  <div class="w-screen min-h-screen h-max text-white py-2 bg-zinc-900 flex flex-col overflow-x-hidden justify-center items-center">
+    <nav class="w-screen min-h-[5vh] flex justify-between items-center px-10 mb-5">
+      <a  class="bg-blue-500 px-5 py-2 text-xl rounded-md" href="/">Profile</a>
+      <a  class="bg-red-500 px-5 py-2 text-xl rounded-md" href="/logout">Logout</a>
     </nav>
     <!-- users posts and edit and like button -->
     <div
-      class="post-container w-screen h-screen grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1  p-6 rounded-lg">
+      class="post-container w-screen min-h-screen h-max place-items-center justify-center grid sm:gap-2 gap-7 grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1  p-6 rounded-lg">
       <%if(!posts.length>0){%>
         <h1 class="text-zinc-500">There is no post yet</h1>
         <%}else{%>
           <%posts.forEach((post)=>{%>
             <div
-             class="w-[300px] h-[300px] bg-zinc-800  p-5 rounded-xl shadow-lg shadow-slate-800">
+             class="w-[90%] h-[300px] bg-zinc-800  p-5 rounded-xl shadow-lg shadow-slate-800">
               <h3 class="p-2 text-left text-zinc-500 mb-2 text-sm tracking-wide ">@<%=post.user.username%></h3>
               <h1 class="p-2 text-center text-zinc-200 mb-2 text-xl tracking-tight capitalize"><%=post.title%></h1>
               <p class="p-2 w-[100%] h-[75px] inline-block text-center text-zinc-400 mb-2 text-md tracking-tighter overflow-hidden"><%=post.content%></p>
