@@ -16,16 +16,16 @@
     </nav>
     <!-- users posts and edit and like button -->
     <div
-      class="post-container w-screen h-screen flex flex-wrap justify-start gap-2 p-6 rounded-lg">
+      class="post-container w-screen h-screen grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1  p-6 rounded-lg">
       <%if(!posts.length>0){%>
         <h1 class="text-zinc-500">There is no post yet</h1>
         <%}else{%>
           <%posts.forEach((post)=>{%>
             <div
-             class="w-[300px] h-[200px] bg-zinc-800  p-5 rounded-xl shadow-lg shadow-slate-800">
+             class="w-[300px] h-[300px] bg-zinc-800  p-5 rounded-xl shadow-lg shadow-slate-800">
               <h3 class="p-2 text-left text-zinc-500 mb-2 text-sm tracking-wide ">@<%=post.user.username%></h3>
               <h1 class="p-2 text-center text-zinc-200 mb-2 text-xl tracking-tight capitalize"><%=post.title%></h1>
-              <p class="p-2 text-center text-zinc-400 mb-2 text-md tracking-tighter "><%=post.content%></p>
+              <p class="p-2 w-[100%] h-[75px] inline-block text-center text-zinc-400 mb-2 text-md tracking-tighter overflow-hidden"><%=post.content%></p>
               <small><%= post.Likes.length%> likes</small>
                 <a href="/all/like/<%= post._id %>" class="text-white bg-blue-500 px-4 py-2 rounded-xl">
                     <%=post.Likes.indexOf(user._id)==-1?"Like":"Unlike" %>
